@@ -16,7 +16,7 @@ body {
 .section-title {
     font-family: 'Fira Mono', monospace;
     font-size: 2rem;
-    color: #3a8bff;
+    color: #2b66b9;
     margin-bottom: 1rem;
 }
 
@@ -69,6 +69,11 @@ pre {
     overflow-x: auto;
 }
 
+.prealign {
+    padding: 0.5em;
+    margin: 0.5em 1em 0.5em 1em;
+}
+
 ul, ol {
     margin-bottom: 1.5rem;
 }
@@ -93,10 +98,10 @@ a:hover {
 }
 
 h3 {
-    color: #3a8bff;
-    font-size: medium;
+    color: #2b66b9;
+    font-size: 1.2rem;
     font-family: 'Fira Mono', monospace;
-    padding: 1em 0 0 0;
+    padding: 1em 0 0.5em 0;
 }
 
 kbd {

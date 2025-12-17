@@ -9,6 +9,34 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" type="text/css" href="asciinema-player.css" />
+
+    <script>
+        function copyCodeToClipboard(btnId, codeId) {
+            var copyBtn = document.getElementById(btnId);
+            var codeElem = document.getElementById(codeId);
+            if (copyBtn && codeElem) {
+                copyBtn.addEventListener('click', function() {
+                    var text = codeElem.textContent;
+                    if (navigator.clipboard) {
+                        navigator.clipboard.writeText(text);
+                    } else {
+                        // fallback for older browsers
+                        var range = document.createRange();
+                        range.selectNodeContents(codeElem);
+                        var sel = window.getSelection();
+                        sel.removeAllRanges();
+                        sel.addRange(range);
+                        document.execCommand('copy');
+                        sel.removeAllRanges();
+                    }
+                    copyBtn.textContent = 'Copied!';
+                    setTimeout(function() {
+                        copyBtn.textContent = 'Copy';
+                    }, 1500);
+                });
+            }
+        }
+    </script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
@@ -29,7 +57,7 @@
                     <li class="nav-item"><a class="nav-link" href="#importing-shortcuts">Importing Shortcuts</a></li>
                     <li class="nav-item"><a class="nav-link" href="#logging">Logging</a></li>
                     <li class="nav-item"><a class="nav-link" href="#license">License</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://github.com/AmadeusITGroup/cdir">Github</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://github.com/AmadeusITGroup/cdir"><img src="github-mark-white.svg" alt="GitHub" width="24" height="24" style="vertical-align:middle;"></a></li>
                 </ul>
             </div>
         </div>
@@ -76,12 +104,13 @@
         </section>
         <section id="commands" class="mb-5">
             <h2 class="section-title">Commands</h2>
+            <h3>Most used commands</h3>
             <p>There are three main commands from the terminal:</p>
-            <h3>Open the cdir ui</h3>
+            <p>Launch the cdir ui:</p>
             <pre><code>$ c</code></pre>
-            <h3>Create a named shortcut to the current directory</h3>
+            <p>Create a named shortcut to the current directory:</p>
             <pre><code>$ p myshortcut "optional description"</code></pre>
-            <h3>Go to a directory by shortcut name</h3>
+            <p>Go to a directory by shortcut name:</p>
             <pre><code>$ c myshortcut</code></pre>
             <h3>Others</h3>
             <p>You can discover other commands using <code>cdir --help</code>:</p>
@@ -133,8 +162,23 @@ Options:
             <h2 class="section-title">Installation</h2>
             <h3>With Homebrew (macOS only and recommended)</h3>
             <ol>
-                <li>Setup the AmadeusITGroup tap:<br><code>brew tap AmadeusITGroup/tap</code></li>
-                <li>Install cdir:<br><code>brew install cdir</code></li>
+                <li>Setup the AmadeusITGroup tap:<br>
+                    <pre><code id="brewTapCode">brew tap AmadeusITGroup/tap</code></pre>
+                    <button class="prealign btn btn-outline-secondary btn-sm mb-3" type="button" id="copyBrewTapBtn">Copy</button>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            copyCodeToClipboard('copyBrewTapBtn', 'brewTapCode');
+                        });
+                    </script>                </li>
+                <li>Install cdir:<br>
+                    <pre><code id="brewInstallCode">brew install cdir</code></pre>
+                    <button class="prealign btn btn-outline-secondary btn-sm mb-3" type="button" id="copyBrewInstallBtn">Copy</button>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            copyCodeToClipboard('copyBrewInstallBtn', 'brewInstallCode');
+                        });
+                    </script>
+                </li>
                 <li>If it is the first time you use <code>cdir</code>, you have to perform the
                     following step to initialize the configuration:
                     <pre><code>$ cdir
