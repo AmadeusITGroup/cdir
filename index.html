@@ -131,7 +131,7 @@ Options:
         </section>
         <section id="installation" class="mb-5">
             <h2 class="section-title">Installation</h2>
-            <h3>With Homebrew (macOS only)</h3>
+            <h3>With Homebrew (macOS only and recommended)</h3>
             <ol>
                 <li>Setup the AmadeusITGroup tap:<br><code>brew tap AmadeusITGroup/tap</code></li>
                 <li>Install cdir:<br><code>brew install cdir</code></li>
@@ -154,11 +154,35 @@ Documentation is available at https://github.com/AmadeusITGroup/cdir</code></pre
             <h3>From the tarball (Linux or macOS)</h3>
             <ol>
                 <li>Download the latest release from the <a href="https://github.com/AmadeusITGroup/cdir/releases">releases page</a>.</li>
-                <li>Extract the archive:<br><code>tar xzf cdir-aarch64-apple-darwin.tar.gz</code></li>
-                <li>Go to the extracted directory and run the installer:<br><code>cd cdir-aarch64-apple-darwin<br>./install.sh</code></li>
-                <li>If needed, add the installation directory to your <code>PATH</code>.</li>
-                <li>Run <code>cdir</code> to initialize the configuration as described in the section for macOS here above.</li>
+                <li>Extract the archive:<br>
+                    <pre><code>$ tar xzf cdir-aarch64-apple-darwin.tar.gz</code></pre>
+                </li>
+                <li>Go to the extracted directory and run the installer:<br>
+                    <pre><code>$ cd cdir-aarch64-apple-darwin
+$ ./install.sh
+#############################
+#      cdir installer       #
+#############################
+
+Installing the binary 'cdir' into: /home/<user>/.local/bin...
+Installing the shell functions 'cdir_funcs.sh' into: /home/<user>/.local/bin...
+done
+                    </code></pre>
+
+                </li>
+                <li>If needed, add the installation directory to your <code>PATH</code>.
+                    <pre><code>$ export PATH=$PATH:/root/.local/bin # update you shell profile if needed...</code></pre>
+                </li>
+
+                <li>Run <code>cdir</code> to initialize the configuration as described in the section for macOS here above.
+                    <pre><code>$ cdir
+→ Initializing the configuration...
+...</code></pre></li>
+                <li>Either restart your shell or run <code>source ~/.cdirsh</code> to apply the changes.<br>
+                    Then, you can use the <code>c</code> shell alias to launch the GUI, and the <code>p</code> alias to create shortcuts.
+                </li>
             </ol>
+            <p>In the future, if you want to update you binaries, you will have to download a new version of the tarball and launch `install.sh` again.</p>
         </section>
         <section id="configuration" class="mb-5">
             <h2 class="section-title">Configuration</h2>
