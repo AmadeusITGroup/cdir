@@ -21,8 +21,8 @@ tui-textarea = "0.7.0"
 dark-light = "2.0.0"
 nucleo-matcher = "0.3.1"
 
-[dependency-overrides]
-ashpd = "0.12.1"
+[patch.crates-io]
+ashpd = { git = "https://github.com/bilelmoussaoui/ashpd.git", rev = "0.12.1" }
 
 # The profile that 'dist' will build with
 [profile.dist]
